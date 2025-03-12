@@ -1,0 +1,46 @@
+1. Follow a Line path, keep within line
+
+- Camera train it on the perfect route.
+- Possibly use RL sim to reality training (Jamie stuff)
+- Move forward if on line, turn to face line if not on line.
+- Keep all wheels within the line.
+
+
+2. Follow a person, keep distance, variable velocity:
+
+- Find a way to Choose a person on the stream image.
+- Have a rover follow the image by moving until the RGBDepth is within a range.
+- Possibly Cache the humans it found and relate them if seen again to prevent mixups.
+- Obstacle avoidance (avoiding people).
+- What if the person is behind an obstacle the rover cant bypass. (Possibly find a solution exit).
+
+
+
+
+
+1. Object Tracking with YOLO11:
+
+YOLO11 supports multi-object tracking, which assigns unique IDs to detected objects across video frames. This allows the system to track objects over time and detect when they reappear. To implement object tracking:
+
+    Utilize the Tracking Mode: YOLO11 offers a tracking mode that integrates object detection with tracking algorithms. This mode enables the model to assign unique IDs to each detected object and maintain their identities across frames.
+    docs.ultralytics.com
+
+    Integrate with Tracking Algorithms: Combine YOLO11 with tracking algorithms like ByteTrack to enhance tracking performance. These algorithms help in maintaining consistent object identities and handling occlusions.
+    YouTube
+
+2. Object Re-Identification:
+
+For scenarios where you need to recognize objects that have been seen before, integrating a re-identification (ReID) system is beneficial. ReID involves extracting feature embeddings from detected objects and comparing them to a database of known objects to determine matches. To implement object re-identification:
+
+    Extract Feature Embeddings: Use YOLO11 to detect objects and extract feature embeddings that capture the unique characteristics of each object.
+
+    Maintain a Database: Store the feature embeddings of known objects in a database.
+
+    Compare Embeddings: When a new object is detected, compare its feature embedding with those in the database to identify if it matches any previously seen objects.
+
+Implementing object tracking and re-identification with YOLO11 enhances its capability to recognize and alert you when previously detected objects reappear. For detailed guidance on setting up object tracking with YOLO11, refer to the official documentation:
+docs.ultralytics.com
+
+For a practical demonstration of multi-object tracking using YOLO11, you might find this video tutorial helpful:
+
+https://www.youtube.com/watch?v=etjkjZoG2F0
