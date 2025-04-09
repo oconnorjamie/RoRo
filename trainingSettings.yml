@@ -1,0 +1,48 @@
+behaviors:
+  FollowPath:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 512
+      buffer_size: 4096
+      learning_rate: 3.0e-4
+      learning_rate_schedule: linear
+      beta: 1.0e-3
+      beta_schedule: constant
+      epsilon: 0.15
+      epsilon_schedule: linear
+      lambd: 0.95
+      num_epoch: 3
+
+    network_settings:
+      vis_encode_type: nature_cnn
+      normalize: true
+      hidden_units: 256
+      num_layers: 3
+      memory:
+        sequence_length: 16
+        memory_size: 128
+
+    reward_signals:
+#      curiosity:
+#        strength: 0.01
+#        gamma: 0.99
+#        network_settings:
+#          hidden_units: 256
+#          num_layers: 1
+      extrinsic:
+        strength: 1.0
+        gamma: 0.99
+#      gail: # Phase Out Completley for generalisation.
+#        strength: 0.1
+#        gamma: 0.99
+#        demo_path: "Demos/Perfection.demo"
+#        use_vail: true
+#        network_settings:
+#          hidden_units: 256
+#          num_layers: 3
+
+    max_steps: 10000000         
+    time_horizon: 512
+    summary_freq: 10000
+    checkpoint_interval: 20000
+
