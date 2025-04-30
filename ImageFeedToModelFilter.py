@@ -1,11 +1,3 @@
-#
-#
-#
-#  This MUST ONLY take black yellow images. black bg, yellow lines taken. Miles made an example a while back
-#
-#
-#
-
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -71,15 +63,19 @@ def connect_yellow_lines(input_path, output_path):
     output = np.zeros((h, w, 3), dtype=np.uint8)
     output[final_mask > 0] = (0, 255, 255)
 
-    # Resize to 128x128
-    final = cv2.resize(output, (128, 128), interpolation=cv2.INTER_AREA)
+    # Resize to 64x64
+    final = cv2.resize(output, (64, 64), interpolation=cv2.INTER_AREA)
 
     # Convert all non-black pixels to white
     final[np.any(final != [0, 0, 0], axis=-1)] = [255, 255, 255]
+
+    # Convert to grayscale
+    final = cv2.cvtColor(final, cv2.COLOR_BGR2GRAY)
+
 
     # Save final result
     cv2.imwrite(output_path, final)
     print(f"Saved final connected path to {output_path}")
 
 if __name__ == "__main__":
-    connect_yellow_lines('image.png', 'output5.png')
+    connect_yellow_lines('image.png', 'output6.png')
