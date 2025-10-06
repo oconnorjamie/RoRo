@@ -1,5 +1,8 @@
 # RoboticsRover
-Robotics Final year coursework for a Rover designed to follow a path on the floor and track manually selected people.
+Robotics Rover for University.
+
+
+This was a final year coursework for a Rover designed to follow a path on the floor and track manually selected people.
 
 **Stage 1 (Path Following) Reinforecment Learning Visual Neural Network:**
 
